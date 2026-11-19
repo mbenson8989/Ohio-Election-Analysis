@@ -1,0 +1,12 @@
+{
+ "rows_found": 89,
+ "rows_expected": 89,
+ "missing": [],
+ "cells_checked": 1246,
+ "cells_matched": 1246,
+ "mismatches": [],
+ "sort_order_ok": true,
+ "pages": 3,
+ "header_rows_seen": 3,
+ "unofficial_mentions": 4
+}

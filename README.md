@@ -31,6 +31,7 @@ Affiliation is the party of the voter's most recent partisan primary ballot in t
 | `tools/` | Browser (Chrome DevTools) download helpers used to fetch SOS files behind Cloudflare |
 | `raw/` | Untouched SOS source files (see below) |
 | `OH_*.png` | Charts used on the Graphs page |
+| `Ohio_88_County_Democratic_Registration_and_Vote_Change.pdf` | 88-county table (3 pages), sorted by 2026 Democratic affiliation share; built by `scripts/build_pdf.py`, checked cell-by-cell from its extracted text by `scripts/verify_pdf.py` (`verification/pdf_text_check.json`) |
 
 Run order: `aggregate_voterfiles.py` → `build_data.py` → `verify_pass1.py` → `verify_pass2.py` → `charts.py` → `build_wiki.py`.
 

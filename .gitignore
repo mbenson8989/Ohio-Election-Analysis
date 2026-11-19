@@ -6,3 +6,6 @@ __pycache__/
 raw/voterfile_swvf_20261114/
 raw/datact_snapshot_20261103/*.csv
 raw/_headers/
+pdfwork/
+PUSH_STEPS.md
+finish_wiki.sh
