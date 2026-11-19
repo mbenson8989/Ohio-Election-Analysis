@@ -1,0 +1,952 @@
+{
+ "generated": "2026-11-19T17:06:41",
+ "runtime_s": 17.4,
+ "pdf": "Ohio_88_County_Democratic_Registration_and_Vote_Change.pdf",
+ "pdf_pages": 3,
+ "table_rows": 89,
+ "cells_checked": 1165,
+ "cells_matched": 1165,
+ "mismatches": [],
+ "structural_issues": [],
+ "rounding_ties": [],
+ "xml_vs_xlsx_2026": {
+  "units": 88,
+  "fields_compared": 264,
+  "mismatches": []
+ },
+ "county_sum_vs_canvass_total": [
+  {
+   "item": "2022 Total D",
+   "county_sum": 1545489,
+   "canvass_total": 1545489,
+   "ok": true
+  },
+  {
+   "item": "2022 Total ballots",
+   "county_sum": 4201368,
+   "canvass_total": 4201368,
+   "ok": true
+  },
+  {
+   "item": "2026 Total D",
+   "county_sum": 2404178,
+   "canvass_total": 2404178,
+   "ok": true
+  },
+  {
+   "item": "2026 Total ballots",
+   "county_sum": 4658250,
+   "canvass_total": 4658250,
+   "ok": true
+  },
+  {
+   "item": "2026 Total reg",
+   "county_sum": 8018054,
+   "canvass_total": 8018054,
+   "ok": true
+  }
+ ],
+ "statewide": {
+  "d22": 1053909,
+  "d26": 967399,
+  "reg26": 8018054,
+  "v22": 1545489,
+  "v26": 2404178,
+  "b22": 4201368,
+  "b26": 4658250,
+  "share26_pct": "12.07"
+ },
+ "voterfile_records": 8015428,
+ "sources": [
+  "raw/2022_statewide-races-summary.xlsx",
+  "raw/11032026GenUnTotCanSumm11192026-1753.xlsx",
+  "raw/2026_VSSC1622_NIST1500-100_20261119-1753.xml",
+  "raw/crosscheck/2022-05-03_primary_ballotscastsummaryofficialresults.xlsx",
+  "raw/voterfile_swvf_20261114/SWVF_1_22.txt.gz",
+  "raw/voterfile_swvf_20261114/SWVF_23_44.txt.gz",
+  "raw/voterfile_swvf_20261114/SWVF_45_66.txt.gz",
+  "raw/voterfile_swvf_20261114/SWVF_67_88.txt.gz"
+ ],
+ "per_county_raw": {
+  "Adams": {
+   "records": 17118,
+   "aff26_D": 928,
+   "recon22_D": 871,
+   "reg22": 14661,
+   "may22_D": 463,
+   "may22_official_D": 495,
+   "d22_exact": 931.1987041036717,
+   "county_number": 1
+  },
+  "Allen": {
+   "records": 64210,
+   "aff26_D": 4161,
+   "recon22_D": 4663,
+   "reg22": 55297,
+   "may22_D": 2364,
+   "may22_official_D": 2642,
+   "d22_exact": 5211.356175972927,
+   "county_number": 2
+  },
+  "Ashland": {
+   "records": 33559,
+   "aff26_D": 2102,
+   "recon22_D": 2186,
+   "reg22": 29779,
+   "may22_D": 1167,
+   "may22_official_D": 1258,
+   "d22_exact": 2356.459297343616,
+   "county_number": 3
+  },
+  "Ashtabula": {
+   "records": 58993,
+   "aff26_D": 6828,
+   "recon22_D": 6662,
+   "reg22": 51408,
+   "may22_D": 3716,
+   "may22_official_D": 4113,
+   "d22_exact": 7373.736813778256,
+   "county_number": 4
+  },
+  "Athens": {
+   "records": 35990,
+   "aff26_D": 6262,
+   "recon22_D": 6481,
+   "reg22": 28978,
+   "may22_D": 3116,
+   "may22_official_D": 3369,
+   "d22_exact": 7007.217265725289,
+   "county_number": 5
+  },
+  "Auglaize": {
+   "records": 31932,
+   "aff26_D": 1168,
+   "recon22_D": 1485,
+   "reg22": 28428,
+   "may22_D": 735,
+   "may22_official_D": 808,
+   "d22_exact": 1632.4897959183672,
+   "county_number": 6
+  },
+  "Belmont": {
+   "records": 42335,
+   "aff26_D": 3862,
+   "recon22_D": 4341,
+   "reg22": 37016,
+   "may22_D": 2284,
+   "may22_official_D": 2606,
+   "d22_exact": 4952.9973730297725,
+   "county_number": 7
+  },
+  "Brown": {
+   "records": 29002,
+   "aff26_D": 1479,
+   "recon22_D": 1627,
+   "reg22": 24954,
+   "may22_D": 740,
+   "may22_official_D": 839,
+   "d22_exact": 1844.6662162162163,
+   "county_number": 8
+  },
+  "Butler": {
+   "records": 249057,
+   "aff26_D": 20479,
+   "recon22_D": 18440,
+   "reg22": 212238,
+   "may22_D": 8174,
+   "may22_official_D": 8709,
+   "d22_exact": 19646.924394421338,
+   "county_number": 9
+  },
+  "Carroll": {
+   "records": 17716,
+   "aff26_D": 1298,
+   "recon22_D": 1414,
+   "reg22": 15734,
+   "may22_D": 747,
+   "may22_official_D": 831,
+   "d22_exact": 1573.004016064257,
+   "county_number": 10
+  },
+  "Champaign": {
+   "records": 26356,
+   "aff26_D": 1857,
+   "recon22_D": 1815,
+   "reg22": 23047,
+   "may22_D": 907,
+   "may22_official_D": 1009,
+   "d22_exact": 2019.1124586549063,
+   "county_number": 11
+  },
+  "Clark": {
+   "records": 84686,
+   "aff26_D": 8606,
+   "recon22_D": 8421,
+   "reg22": 73627,
+   "may22_D": 4858,
+   "may22_official_D": 5388,
+   "d22_exact": 9339.71757925072,
+   "county_number": 12
+  },
+  "Clermont": {
+   "records": 149882,
+   "aff26_D": 10955,
+   "recon22_D": 11130,
+   "reg22": 125012,
+   "may22_D": 4509,
+   "may22_official_D": 4720,
+   "d22_exact": 11650.831669993348,
+   "county_number": 13
+  },
+  "Clinton": {
+   "records": 27350,
+   "aff26_D": 1408,
+   "recon22_D": 1484,
+   "reg22": 23780,
+   "may22_D": 839,
+   "may22_official_D": 908,
+   "d22_exact": 1606.0452920143027,
+   "county_number": 14
+  },
+  "Columbiana": {
+   "records": 63824,
+   "aff26_D": 4584,
+   "recon22_D": 4926,
+   "reg22": 56168,
+   "may22_D": 2505,
+   "may22_official_D": 2858,
+   "d22_exact": 5620.162874251497,
+   "county_number": 15
+  },
+  "Coshocton": {
+   "records": 21636,
+   "aff26_D": 1500,
+   "recon22_D": 1677,
+   "reg22": 19245,
+   "may22_D": 845,
+   "may22_official_D": 947,
+   "d22_exact": 1879.4307692307693,
+   "county_number": 16
+  },
+  "Crawford": {
+   "records": 27354,
+   "aff26_D": 1519,
+   "recon22_D": 1796,
+   "reg22": 23005,
+   "may22_D": 937,
+   "may22_official_D": 1065,
+   "d22_exact": 2041.3447171824973,
+   "county_number": 17
+  },
+  "Cuyahoga": {
+   "records": 877581,
+   "aff26_D": 160698,
+   "recon22_D": 168886,
+   "reg22": 730337,
+   "may22_D": 88563,
+   "may22_official_D": 95669,
+   "d22_exact": 182436.84985829296,
+   "county_number": 18
+  },
+  "Darke": {
+   "records": 33973,
+   "aff26_D": 1510,
+   "recon22_D": 1679,
+   "reg22": 29955,
+   "may22_D": 935,
+   "may22_official_D": 1061,
+   "d22_exact": 1905.260962566845,
+   "county_number": 19
+  },
+  "Defiance": {
+   "records": 26011,
+   "aff26_D": 1910,
+   "recon22_D": 2147,
+   "reg22": 22526,
+   "may22_D": 1130,
+   "may22_official_D": 1260,
+   "d22_exact": 2394.0,
+   "county_number": 20
+  },
+  "Delaware": {
+   "records": 169945,
+   "aff26_D": 21615,
+   "recon22_D": 20923,
+   "reg22": 147083,
+   "may22_D": 9166,
+   "may22_official_D": 9142,
+   "d22_exact": 20868.215797512545,
+   "county_number": 21
+  },
+  "Erie": {
+   "records": 52471,
+   "aff26_D": 6096,
+   "recon22_D": 6984,
+   "reg22": 46496,
+   "may22_D": 3373,
+   "may22_official_D": 3663,
+   "d22_exact": 7584.4624962941,
+   "county_number": 22
+  },
+  "Fairfield": {
+   "records": 112772,
+   "aff26_D": 10923,
+   "recon22_D": 10045,
+   "reg22": 96891,
+   "may22_D": 4651,
+   "may22_official_D": 4779,
+   "d22_exact": 10321.448075682649,
+   "county_number": 23
+  },
+  "Fayette": {
+   "records": 16892,
+   "aff26_D": 853,
+   "recon22_D": 917,
+   "reg22": 14578,
+   "may22_D": 492,
+   "may22_official_D": 539,
+   "d22_exact": 1004.599593495935,
+   "county_number": 24
+  },
+  "Franklin": {
+   "records": 905710,
+   "aff26_D": 142857,
+   "recon22_D": 136007,
+   "reg22": 765566,
+   "may22_D": 68548,
+   "may22_official_D": 72750,
+   "d22_exact": 144344.24417926124,
+   "county_number": 25
+  },
+  "Fulton": {
+   "records": 28917,
+   "aff26_D": 2106,
+   "recon22_D": 2192,
+   "reg22": 25431,
+   "may22_D": 1390,
+   "may22_official_D": 1542,
+   "d22_exact": 2431.7007194244607,
+   "county_number": 26
+  },
+  "Gallia": {
+   "records": 18105,
+   "aff26_D": 907,
+   "recon22_D": 1116,
+   "reg22": 15837,
+   "may22_D": 581,
+   "may22_official_D": 676,
+   "d22_exact": 1298.4784853700517,
+   "county_number": 27
+  },
+  "Geauga": {
+   "records": 67199,
+   "aff26_D": 6789,
+   "recon22_D": 6843,
+   "reg22": 60752,
+   "may22_D": 3393,
+   "may22_official_D": 3584,
+   "d22_exact": 7228.20866489832,
+   "county_number": 28
+  },
+  "Greene": {
+   "records": 119656,
+   "aff26_D": 11604,
+   "recon22_D": 12527,
+   "reg22": 101942,
+   "may22_D": 6712,
+   "may22_official_D": 7051,
+   "d22_exact": 13159.69561978546,
+   "county_number": 29
+  },
+  "Guernsey": {
+   "records": 23795,
+   "aff26_D": 1590,
+   "recon22_D": 1846,
+   "reg22": 20770,
+   "may22_D": 912,
+   "may22_official_D": 1028,
+   "d22_exact": 2080.7982456140353,
+   "county_number": 30
+  },
+  "Hamilton": {
+   "records": 616508,
+   "aff26_D": 79800,
+   "recon22_D": 84264,
+   "reg22": 527962,
+   "may22_D": 38541,
+   "may22_official_D": 41100,
+   "d22_exact": 89858.86199112634,
+   "county_number": 31
+  },
+  "Hancock": {
+   "records": 49890,
+   "aff26_D": 3329,
+   "recon22_D": 3822,
+   "reg22": 42577,
+   "may22_D": 1715,
+   "may22_official_D": 1882,
+   "d22_exact": 4194.171428571429,
+   "county_number": 32
+  },
+  "Hardin": {
+   "records": 17382,
+   "aff26_D": 848,
+   "recon22_D": 999,
+   "reg22": 15157,
+   "may22_D": 524,
+   "may22_official_D": 590,
+   "d22_exact": 1124.828244274809,
+   "county_number": 33
+  },
+  "Harrison": {
+   "records": 9439,
+   "aff26_D": 779,
+   "recon22_D": 918,
+   "reg22": 8353,
+   "may22_D": 541,
+   "may22_official_D": 611,
+   "d22_exact": 1036.7800369685767,
+   "county_number": 34
+  },
+  "Henry": {
+   "records": 18940,
+   "aff26_D": 1361,
+   "recon22_D": 1281,
+   "reg22": 16128,
+   "may22_D": 603,
+   "may22_official_D": 679,
+   "d22_exact": 1442.452736318408,
+   "county_number": 35
+  },
+  "Highland": {
+   "records": 27106,
+   "aff26_D": 1219,
+   "recon22_D": 1228,
+   "reg22": 23360,
+   "may22_D": 604,
+   "may22_official_D": 662,
+   "d22_exact": 1345.9205298013244,
+   "county_number": 36
+  },
+  "Hocking": {
+   "records": 17577,
+   "aff26_D": 1565,
+   "recon22_D": 1673,
+   "reg22": 15591,
+   "may22_D": 944,
+   "may22_official_D": 1041,
+   "d22_exact": 1844.9078389830509,
+   "county_number": 37
+  },
+  "Holmes": {
+   "records": 17586,
+   "aff26_D": 623,
+   "recon22_D": 676,
+   "reg22": 15393,
+   "may22_D": 371,
+   "may22_official_D": 437,
+   "d22_exact": 796.2587601078167,
+   "county_number": 38
+  },
+  "Huron": {
+   "records": 35656,
+   "aff26_D": 2657,
+   "recon22_D": 3169,
+   "reg22": 30965,
+   "may22_D": 1420,
+   "may22_official_D": 1554,
+   "d22_exact": 3468.0464788732393,
+   "county_number": 39
+  },
+  "Jackson": {
+   "records": 19873,
+   "aff26_D": 1148,
+   "recon22_D": 1000,
+   "reg22": 17532,
+   "may22_D": 401,
+   "may22_official_D": 449,
+   "d22_exact": 1119.7007481296757,
+   "county_number": 40
+  },
+  "Jefferson": {
+   "records": 42972,
+   "aff26_D": 3964,
+   "recon22_D": 5548,
+   "reg22": 37157,
+   "may22_D": 2489,
+   "may22_official_D": 2892,
+   "d22_exact": 6446.2900763358775,
+   "county_number": 41
+  },
+  "Knox": {
+   "records": 41994,
+   "aff26_D": 3182,
+   "recon22_D": 3007,
+   "reg22": 36606,
+   "may22_D": 1516,
+   "may22_official_D": 1646,
+   "d22_exact": 3264.8562005277045,
+   "county_number": 42
+  },
+  "Lake": {
+   "records": 162797,
+   "aff26_D": 20433,
+   "recon22_D": 21900,
+   "reg22": 144902,
+   "may22_D": 11330,
+   "may22_official_D": 12000,
+   "d22_exact": 23195.05736981465,
+   "county_number": 43
+  },
+  "Lawrence": {
+   "records": 39183,
+   "aff26_D": 2159,
+   "recon22_D": 2528,
+   "reg22": 33387,
+   "may22_D": 1307,
+   "may22_official_D": 1488,
+   "d22_exact": 2878.090283091048,
+   "county_number": 44
+  },
+  "Licking": {
+   "records": 125973,
+   "aff26_D": 11045,
+   "recon22_D": 11848,
+   "reg22": 109219,
+   "may22_D": 6066,
+   "may22_official_D": 6483,
+   "d22_exact": 12662.476755687438,
+   "county_number": 45
+  },
+  "Logan": {
+   "records": 31426,
+   "aff26_D": 1621,
+   "recon22_D": 1697,
+   "reg22": 27659,
+   "may22_D": 814,
+   "may22_official_D": 914,
+   "d22_exact": 1905.4766584766585,
+   "county_number": 46
+  },
+  "Lorain": {
+   "records": 217206,
+   "aff26_D": 34548,
+   "recon22_D": 31390,
+   "reg22": 189490,
+   "may22_D": 16911,
+   "may22_official_D": 17992,
+   "d22_exact": 33396.53953048312,
+   "county_number": 47
+  },
+  "Lucas": {
+   "records": 292286,
+   "aff26_D": 38237,
+   "recon22_D": 36429,
+   "reg22": 246666,
+   "may22_D": 18517,
+   "may22_official_D": 20220,
+   "d22_exact": 39779.358427391046,
+   "county_number": 48
+  },
+  "Madison": {
+   "records": 27437,
+   "aff26_D": 1881,
+   "recon22_D": 1818,
+   "reg22": 23864,
+   "may22_D": 935,
+   "may22_official_D": 953,
+   "d22_exact": 1852.9989304812834,
+   "county_number": 49
+  },
+  "Mahoning": {
+   "records": 155189,
+   "aff26_D": 24070,
+   "recon22_D": 26353,
+   "reg22": 135715,
+   "may22_D": 14643,
+   "may22_official_D": 16299,
+   "d22_exact": 29333.302397049785,
+   "county_number": 50
+  },
+  "Marion": {
+   "records": 38666,
+   "aff26_D": 2945,
+   "recon22_D": 3387,
+   "reg22": 33938,
+   "may22_D": 1830,
+   "may22_official_D": 2019,
+   "d22_exact": 3736.804918032787,
+   "county_number": 51
+  },
+  "Medina": {
+   "records": 132278,
+   "aff26_D": 15817,
+   "recon22_D": 13844,
+   "reg22": 118011,
+   "may22_D": 7295,
+   "may22_official_D": 7778,
+   "d22_exact": 14760.607539410556,
+   "county_number": 52
+  },
+  "Meigs": {
+   "records": 14303,
+   "aff26_D": 858,
+   "recon22_D": 893,
+   "reg22": 12592,
+   "may22_D": 461,
+   "may22_official_D": 506,
+   "d22_exact": 980.1691973969631,
+   "county_number": 53
+  },
+  "Mercer": {
+   "records": 29027,
+   "aff26_D": 1208,
+   "recon22_D": 1591,
+   "reg22": 25325,
+   "may22_D": 848,
+   "may22_official_D": 937,
+   "d22_exact": 1757.9799528301887,
+   "county_number": 54
+  },
+  "Miami": {
+   "records": 77636,
+   "aff26_D": 5473,
+   "recon22_D": 5046,
+   "reg22": 67703,
+   "may22_D": 2387,
+   "may22_official_D": 2497,
+   "d22_exact": 5278.534562211981,
+   "county_number": 55
+  },
+  "Monroe": {
+   "records": 8646,
+   "aff26_D": 816,
+   "recon22_D": 1204,
+   "reg22": 7795,
+   "may22_D": 579,
+   "may22_official_D": 661,
+   "d22_exact": 1374.5146804835924,
+   "county_number": 56
+  },
+  "Montgomery": {
+   "records": 365302,
+   "aff26_D": 47363,
+   "recon22_D": 45012,
+   "reg22": 311888,
+   "may22_D": 27523,
+   "may22_official_D": 29862,
+   "d22_exact": 48837.27587835628,
+   "county_number": 57
+  },
+  "Morgan": {
+   "records": 8758,
+   "aff26_D": 620,
+   "recon22_D": 674,
+   "reg22": 7810,
+   "may22_D": 339,
+   "may22_official_D": 379,
+   "d22_exact": 753.52802359882,
+   "county_number": 58
+  },
+  "Morrow": {
+   "records": 24080,
+   "aff26_D": 1498,
+   "recon22_D": 1567,
+   "reg22": 20946,
+   "may22_D": 891,
+   "may22_official_D": 1004,
+   "d22_exact": 1765.732884399551,
+   "county_number": 59
+  },
+  "Muskingum": {
+   "records": 53123,
+   "aff26_D": 3345,
+   "recon22_D": 3736,
+   "reg22": 47285,
+   "may22_D": 1746,
+   "may22_official_D": 1993,
+   "d22_exact": 4264.5177548682705,
+   "county_number": 60
+  },
+  "Noble": {
+   "records": 7827,
+   "aff26_D": 536,
+   "recon22_D": 1104,
+   "reg22": 7007,
+   "may22_D": 370,
+   "may22_official_D": 404,
+   "d22_exact": 1205.4486486486487,
+   "county_number": 61
+  },
+  "Ottawa": {
+   "records": 29912,
+   "aff26_D": 3198,
+   "recon22_D": 3563,
+   "reg22": 26831,
+   "may22_D": 2038,
+   "may22_official_D": 2267,
+   "d22_exact": 3963.356722276742,
+   "county_number": 62
+  },
+  "Paulding": {
+   "records": 12226,
+   "aff26_D": 730,
+   "recon22_D": 786,
+   "reg22": 10650,
+   "may22_D": 439,
+   "may22_official_D": 519,
+   "d22_exact": 929.2346241457859,
+   "county_number": 63
+  },
+  "Perry": {
+   "records": 22516,
+   "aff26_D": 1609,
+   "recon22_D": 1761,
+   "reg22": 19896,
+   "may22_D": 1032,
+   "may22_official_D": 1147,
+   "d22_exact": 1957.235465116279,
+   "county_number": 64
+  },
+  "Pickaway": {
+   "records": 38553,
+   "aff26_D": 2882,
+   "recon22_D": 2783,
+   "reg22": 33491,
+   "may22_D": 1322,
+   "may22_official_D": 1450,
+   "d22_exact": 3052.4583963691375,
+   "county_number": 65
+  },
+  "Pike": {
+   "records": 17142,
+   "aff26_D": 1179,
+   "recon22_D": 1226,
+   "reg22": 14900,
+   "may22_D": 556,
+   "may22_official_D": 626,
+   "d22_exact": 1380.3525179856115,
+   "county_number": 66
+  },
+  "Portage": {
+   "records": 108193,
+   "aff26_D": 15175,
+   "recon22_D": 14367,
+   "reg22": 93419,
+   "may22_D": 7894,
+   "may22_official_D": 8527,
+   "d22_exact": 15519.053585001267,
+   "county_number": 67
+  },
+  "Preble": {
+   "records": 27920,
+   "aff26_D": 1317,
+   "recon22_D": 1487,
+   "reg22": 24607,
+   "may22_D": 766,
+   "may22_official_D": 858,
+   "d22_exact": 1665.5953002610966,
+   "county_number": 68
+  },
+  "Putnam": {
+   "records": 23634,
+   "aff26_D": 1036,
+   "recon22_D": 1215,
+   "reg22": 21215,
+   "may22_D": 580,
+   "may22_official_D": 663,
+   "d22_exact": 1388.8706896551723,
+   "county_number": 69
+  },
+  "Richland": {
+   "records": 77873,
+   "aff26_D": 7157,
+   "recon22_D": 6240,
+   "reg22": 68554,
+   "may22_D": 3504,
+   "may22_official_D": 3833,
+   "d22_exact": 6825.890410958904,
+   "county_number": 70
+  },
+  "Ross": {
+   "records": 45331,
+   "aff26_D": 3996,
+   "recon22_D": 3989,
+   "reg22": 39203,
+   "may22_D": 1945,
+   "may22_official_D": 2128,
+   "d22_exact": 4364.314652956298,
+   "county_number": 71
+  },
+  "Sandusky": {
+   "records": 38728,
+   "aff26_D": 3885,
+   "recon22_D": 3923,
+   "reg22": 34112,
+   "may22_D": 2155,
+   "may22_official_D": 2380,
+   "d22_exact": 4332.593967517401,
+   "county_number": 72
+  },
+  "Scioto": {
+   "records": 42729,
+   "aff26_D": 3077,
+   "recon22_D": 3230,
+   "reg22": 37455,
+   "may22_D": 1533,
+   "may22_official_D": 1733,
+   "d22_exact": 3651.395955642531,
+   "county_number": 73
+  },
+  "Seneca": {
+   "records": 33932,
+   "aff26_D": 2684,
+   "recon22_D": 3108,
+   "reg22": 30015,
+   "may22_D": 1636,
+   "may22_official_D": 1827,
+   "d22_exact": 3470.8533007334963,
+   "county_number": 74
+  },
+  "Shelby": {
+   "records": 32192,
+   "aff26_D": 1394,
+   "recon22_D": 1639,
+   "reg22": 28269,
+   "may22_D": 797,
+   "may22_official_D": 896,
+   "d22_exact": 1842.5897114178167,
+   "county_number": 75
+  },
+  "Stark": {
+   "records": 248295,
+   "aff26_D": 31289,
+   "recon22_D": 28817,
+   "reg22": 210375,
+   "may22_D": 14715,
+   "may22_official_D": 16122,
+   "d22_exact": 31572.386952089706,
+   "county_number": 76
+  },
+  "Summit": {
+   "records": 375600,
+   "aff26_D": 57803,
+   "recon22_D": 56255,
+   "reg22": 325200,
+   "may22_D": 29630,
+   "may22_official_D": 31502,
+   "d22_exact": 59809.14647316909,
+   "county_number": 77
+  },
+  "Trumbull": {
+   "records": 131461,
+   "aff26_D": 20173,
+   "recon22_D": 23802,
+   "reg22": 111389,
+   "may22_D": 15111,
+   "may22_official_D": 16858,
+   "d22_exact": 26553.776454238636,
+   "county_number": 78
+  },
+  "Tuscarawas": {
+   "records": 56539,
+   "aff26_D": 5475,
+   "recon22_D": 5794,
+   "reg22": 50264,
+   "may22_D": 2409,
+   "may22_official_D": 2707,
+   "d22_exact": 6510.7339144873395,
+   "county_number": 79
+  },
+  "Union": {
+   "records": 49567,
+   "aff26_D": 3395,
+   "recon22_D": 3597,
+   "reg22": 42327,
+   "may22_D": 1661,
+   "may22_official_D": 1611,
+   "d22_exact": 3488.7218543046356,
+   "county_number": 80
+  },
+  "Van Wert": {
+   "records": 19951,
+   "aff26_D": 776,
+   "recon22_D": 1039,
+   "reg22": 17393,
+   "may22_D": 632,
+   "may22_official_D": 715,
+   "d22_exact": 1175.4509493670887,
+   "county_number": 81
+  },
+  "Vinton": {
+   "records": 8076,
+   "aff26_D": 555,
+   "recon22_D": 607,
+   "reg22": 7156,
+   "may22_D": 267,
+   "may22_official_D": 302,
+   "d22_exact": 686.5692883895131,
+   "county_number": 82
+  },
+  "Warren": {
+   "records": 177241,
+   "aff26_D": 13421,
+   "recon22_D": 15399,
+   "reg22": 153009,
+   "may22_D": 5712,
+   "may22_official_D": 6112,
+   "d22_exact": 16477.361344537814,
+   "county_number": 83
+  },
+  "Washington": {
+   "records": 41270,
+   "aff26_D": 3555,
+   "recon22_D": 3502,
+   "reg22": 35494,
+   "may22_D": 1857,
+   "may22_official_D": 2059,
+   "d22_exact": 3882.9391491653205,
+   "county_number": 84
+  },
+  "Wayne": {
+   "records": 68999,
+   "aff26_D": 5551,
+   "recon22_D": 5786,
+   "reg22": 61149,
+   "may22_D": 3004,
+   "may22_official_D": 3306,
+   "d22_exact": 6367.681757656458,
+   "county_number": 85
+  },
+  "Williams": {
+   "records": 24301,
+   "aff26_D": 1542,
+   "recon22_D": 1551,
+   "reg22": 21248,
+   "may22_D": 752,
+   "may22_official_D": 844,
+   "d22_exact": 1740.75,
+   "county_number": 86
+  },
+  "Wood": {
+   "records": 88735,
+   "aff26_D": 10231,
+   "recon22_D": 10124,
+   "reg22": 75600,
+   "may22_D": 4948,
+   "may22_official_D": 5290,
+   "d22_exact": 10823.759094583671,
+   "county_number": 87
+  },
+  "Wyandot": {
+   "records": 14419,
+   "aff26_D": 912,
+   "recon22_D": 940,
+   "reg22": 12681,
+   "may22_D": 492,
+   "may22_official_D": 561,
+   "d22_exact": 1071.8292682926829,
+   "county_number": 88
+  }
+ }
+}

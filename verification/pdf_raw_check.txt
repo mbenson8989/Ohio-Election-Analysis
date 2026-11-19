@@ -1,0 +1,9 @@
+Ohio 88-county PDF: raw-source cell check (2026-11-19T17:06:41, America/Chicago)
+PDF pages: 3; table rows parsed: 89
+Cells checked: 1165  matched: 1165  mismatched: 0
+2026 xlsx vs NIST XML: 264 fields, 0 mismatches
+County sums vs canvass Total row: 2022 Total D OK, 2022 Total ballots OK, 2026 Total D OK, 2026 Total ballots OK, 2026 Total reg OK
+Exact rounding ties (half-up applied): none
+Statewide: {"d22": 1053909, "d26": 967399, "reg26": 8018054, "v22": 1545489, "v26": 2404178, "b22": 4201368, "b26": 4658250, "share26_pct": "12.07"}
+Voter-file records scanned: 8,015,428
+RESULT: ALL CELLS MATCH RAW SOURCES

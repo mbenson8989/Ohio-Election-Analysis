@@ -31,7 +31,7 @@ Affiliation is the party of the voter's most recent partisan primary ballot in t
 | `tools/` | Browser (Chrome DevTools) download helpers used to fetch SOS files behind Cloudflare |
 | `raw/` | Untouched SOS source files (see below) |
 | `OH_*.png` | Charts used on the Graphs page |
-| `Ohio_88_County_Democratic_Registration_and_Vote_Change.pdf` | 88-county table (3 pages), sorted by 2026 Democratic affiliation share; built by `scripts/build_pdf.py`, checked cell-by-cell from its extracted text by `scripts/verify_pdf.py` (`verification/pdf_text_check.json`) |
+| `Ohio_88_County_Democratic_Registration_and_Vote_Change.pdf` | 88-county table (3 pages), sorted by 2026 Democratic affiliation share; built by `scripts/build_pdf.py`, checked cell-by-cell from its extracted text by `scripts/verify_pdf.py` (`verification/pdf_text_check.json`) and, independently from the raw SOS files only, by `scripts/verify_pdf_raw.py` (`verification/pdf_raw_check.json`, `.txt`) |
 
 Run order: `aggregate_voterfiles.py` → `build_data.py` → `verify_pass1.py` → `verify_pass2.py` → `charts.py` → `build_wiki.py`.
 
@@ -55,3 +55,5 @@ Run order: `aggregate_voterfiles.py` → `build_data.py` → `verify_pass1.py` �
 ## Verification
 
 Pass 1: 3,528 figures checked, 3,528 matched, 0 mismatched. Pass 2 (independent code: raw OOXML, NIST XML, DuckDB; also refits the Ohio constant and forward fits with DuckDB regression functions): 3,454 checked, 3,454 matched, 0 mismatched. Pass 2's first run had 2 mismatches in a cross-check column caused by its own CSV escape sniffing; fixed and logged in `pass2_report.json`.
+
+PDF raw-source check (`scripts/verify_pdf_raw.py`, standalone: reads only the raw canvass XLSX via OOXML, the NIST XML, the May 2022 primary XLSX and the four SWVF voter files; reruns the 2022 affiliation rebuild; exact-fraction arithmetic, half-up rounding to the displayed decimal): 1,165 PDF cells checked (89 rows x 13 numeric columns, row order, and 6 narrative figures), 1,165 matched, 0 mismatched. 2026 XLSX vs NIST XML: 264 of 264 fields agree.
