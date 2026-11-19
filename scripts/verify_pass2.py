@@ -117,6 +117,7 @@ cnum = {n: i + 1 for i, n in enumerate(sorted(counties, key=str.upper))}
 
 table = con.execute(f"SELECT * FROM read_csv('{os.path.join(ROOT, 'data', 'ohio_88_counties_by_population.csv')}', all_varchar=true)").fetchdf()
 checks, disc, notes = 0, [], []
+FIT = []   # pass-2's own per-county values, for re-fitting the Ohio constant independently
 def cmp(c, f, mine, theirs, tol=None):
     global checks; checks += 1
     if isinstance(mine, bool): ok = str(mine) == str(theirs)
@@ -142,6 +143,7 @@ for _, t in table.iterrows():
                residual_votes=xml26[c]['D'] * 1.0 - S22 * xml26[c]['ballots'] / 100,
                gap_votes_ne_style=xml26[c]['D'] - a['D'] * d26 / d22, S18=S18, residual_1822=S22 - S18)
     for k, v in der.items(): cmp(c, k, v, t[k], tol=6e-4)
+    FIT.append((c, der['reg_share_loss'], der['dG'], R22, der['G22'], R26, der['G26']))
     cmp(c, 'overballot_DR22', a['D'] + a['R'] > a['ballots'], t['overballot_DR22'])
     cmp(c, 'overballot_DR26', xml26[c]['D'] + xml26[c]['R'] > xml26[c]['ballots'], t['overballot_DR26'])
     cmp(c, 'overballot_all22', a['all'] > a['ballots'], t['overballot_all22'])
@@ -152,9 +154,22 @@ for k, v in (('D22', sum(x22[c]['D'] for c in counties)), ('Rep22', sum(x22[c]['
              ('ballots26', sum(xml26[c]['ballots'] for c in counties)), ('totreg26', sum(xml26[c]['reg'] for c in counties)),
              ('demreg22', sum(round(sw[cnum[c]][3] * p22[c] / sw[cnum[c]][4]) for c in counties)), ('demreg26', sum(sw[cnum[c]][1] for c in counties))):
     cmp('STATEWIDE', k, v, summ[k])
+# ---- Ohio statewide fitted equation, recomputed independently: DuckDB regr_* aggregates + textbook SE formulas on pass-2 values ----
+con.execute("CREATE OR REPLACE TABLE fit2 AS SELECT * FROM (VALUES " + ','.join(f"('{c}',{x!r},{y!r},{r22!r},{g22!r},{r26!r},{g26!r})" for c, x, y, r22, g22, r26, g26 in FIT) + ") v(county,x,y,r22,g22,r26,g26)")
+def fit_sql(x, y):
+    n, b1, b0, r2, sxx, xbar = con.execute(f"SELECT count(*), regr_slope({y},{x}), regr_intercept({y},{x}), regr_r2({y},{x}), regr_sxx({y},{x}), avg({x}) FROM fit2").fetchone()
+    sse = con.execute(f"SELECT sum(power({y} - ({b0} + {b1} * {x}), 2)) FROM fit2").fetchone()[0]
+    s2 = sse / (n - 2); return dict(n=n, slope=b1, intercept=b0, r2=r2, slope_se=math.sqrt(s2 / sxx), intercept_se=math.sqrt(s2 * (1 / n + xbar ** 2 / sxx)))
+fits_json = json.load(open(os.path.join(ROOT, 'data', 'summary.json')))['fits']
+c2 = fit_sql('x', 'y')
+for k in ('n', 'slope', 'intercept', 'r2', 'slope_se', 'intercept_se'): cmp('FIT constant (dG on drop, n=88)', k, c2[k], fits_json['constant'][k], tol=1e-9)
+for yr, xr, yg in (('22', 'r22/100', 'g22'), ('26', 'r26/100', 'g26')):
+    f2 = fit_sql(xr, yg)
+    for k2, k1 in (('slope', 'm'), ('intercept', 'b'), ('r2', 'r2')): cmp(f'FIT forward {yr} (G on R/100)', k1, f2[k2], fits_json['statewide'][yr][k1], tol=1e-9)
+fit_pass2 = c2
 rep = dict(pass_name='Pass 2 (raw OOXML via zipfile/ElementTree; SOS NIST 1500-100 XML for 2026; DuckDB SQL for voter files)',
            run=datetime.datetime.now().strftime('%Y-%m-%d %H:%M CST'), counties=len(table), figures_checked=checks,
-           matched=checks - len(disc), mismatched=len(disc), discrepancies=disc, notes_xlsx_vs_xml_2026=notes,
+           matched=checks - len(disc), mismatched=len(disc), discrepancies=disc, notes_xlsx_vs_xml_2026=notes, ohio_constant_fit_pass2=fit_pass2,
            earlier_runs=['run 1 (12:25 CST): 3,440 of 3,442 matched; 2 mismatches, both snap26_D (Mahoning 24,034 vs 24,073; Clark 8,609 vs 8,610). Cause: pass-2 code read all 88 snapshot files in one DuckDB glob with auto-sniffed escape character (backslash), which mis-split a few quoted fields. Fixed by reading each file with explicit RFC-4180 quoting; raw files unchanged. See pass2_report_run1_superseded.json.'])
 json.dump(rep, open(os.path.join(ROOT, 'verification', 'pass2_report.json'), 'w'), indent=1, default=str)
 print(json.dumps({k: v for k, v in rep.items() if k not in ('discrepancies',)}, default=str), disc[:20])

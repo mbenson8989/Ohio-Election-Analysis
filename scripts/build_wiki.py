@@ -179,8 +179,35 @@ pages['Reverse-Math'] = '\n'.join(rm)
 
 # ------------------------------------------------------------------ Locked-Ohio-Formula
 tr = row(ce_c.county)
-heads = ['The equation', 'How Ohio party affiliation is counted', 'Blank template', 'Rules for using this formula', 'Worked example: ' + tr.county + ' (ceiling county)']
-lf = ['# Locked Ohio Formula', '', BANNER, '', '## Contents', '', toc(heads), '', '## The equation', '',
+FIT_H = 'Statewide Fitted Equation (all 88 counties)'
+heads = [FIT_H, 'The equation', 'How Ohio party affiliation is counted', 'Blank template', 'Rules for using this formula', 'Worked example: ' + tr.county + ' (ceiling county)']
+fx = row('Franklin'); fx_pred = k['intercept'] + k['slope'] * fx.reg_share_loss
+fit_sec = [f'## {FIT_H}', '',
+      '```',
+      f'Ohio equation:   Delta-G = {k["intercept"]:+.2f} + {k["slope"]:.2f} x (Dem affiliation-share drop 2022 -> 2026, points)',
+      f'Four decimals:   Delta-G = {k["intercept"]:+.4f} + {k["slope"]:.4f} x (Dem affiliation-share drop 2022 -> 2026, points)',
+      '```', '',
+      table(['Item', 'Rounded', '4 decimals'], [
+        ['Constant (intercept)', sg(k['intercept']), sg(k['intercept'], 4)],
+        ['Constant standard error', f'{k["intercept_se"]:.2f}', f'{k["intercept_se"]:.4f}'],
+        ['Multiplier (slope)', f'{k["slope"]:.2f}', f'{k["slope"]:.4f}'],
+        ['Multiplier standard error', f'{k["slope_se"]:.2f}', f'{k["slope_se"]:.4f}'],
+        ['Multiplier 95% confidence interval', f'{k["slope_lo"]:.2f} to {k["slope_hi"]:.2f}', f'{k["slope_lo"]:.4f} to {k["slope_hi"]:.4f}'],
+        ['R²', f'{k["r2"]:.2f}', f'{k["r2"]:.4f}'],
+        ['n (counties)', str(k['n']), str(k['n'])]]), '',
+      f'Fitted by ordinary least squares across all 88 Ohio counties, each county weighted equally, using Ohio data only (no other state\'s numbers): 2022 to 2026{A} governor race, ballots denominator, SOS Democratic party-affiliation share. The shift is Delta-G (G 2026 - G 2022); the registration-share drop is R 2022 - R 2026, in points. The fit was computed in the data build (scipy) and recomputed independently in verification Pass 2 (DuckDB regression functions); the two agree to at least 9 decimal places.', '',
+      f'**What it means:** across Ohio\'s counties, each 1-point drop in Democratic affiliation share goes with about {k["slope"]:.2f} points of extra Delta-G, starting from about {sg(k["intercept"])} points when the share does not fall. The fit explains about {100 * k["r2"]:.0f}% of the county-to-county differences in Delta-G; most of Ohio\'s shift is the constant that every county shares. (The line-11 residual below is Delta-G minus the drop, so the same fit written for the residual is residual = {sg(k["intercept"])} - {1 - k["slope"]:.2f} x drop.)', '',
+      f'**Worked example: {fx.county}** (largest county by population):', '',
+      table(['Step', 'Calculation', 'Result'], [
+        ['1. R 2022', f'{i(fx.demreg22)} Democratic-affiliated / {i(fx.totreg22)} registered x 100', f'{fx.R22:.4f}'],
+        ['2. R 2026', f'{i(fx.demreg26)} / {i(fx.totreg26)} x 100', f'{fx.R26:.4f}'],
+        ['3. Affiliation-share drop', f'{fx.R22:.4f} - {fx.R26:.4f}', f'{fx.reg_share_loss:.4f} points'],
+        ['4. Predicted Delta-G', f'{k["intercept"]:+.4f} + {k["slope"]:.4f} x {fx.reg_share_loss:.4f}', f'{sg(fx_pred, 4)}'],
+        ['5. S 2022 and S 2026', f'{i(fx.D22)} / {i(fx.ballots22)} x 100; {i(fx.D26)}{A} / {i(fx.ballots26)}{A} x 100', f'{fx.S22:.4f}; {fx.S26:.4f}{A}'],
+        ['6. Actual Delta-G', f'({fx.S26:.4f} - {fx.R26:.4f}) - ({fx.S22:.4f} - {fx.R22:.4f})', f'{sg(fx.dG, 4)}{A}'],
+        ['7. Difference from the fitted line', f'{fx.dG:.4f} - {fx_pred:.4f} (actual - predicted)', f'{sg(fx.dG - fx_pred, 4)}{A}']]), '',
+      f'Each step is computed from unrounded values, so redoing it with the 4-decimal figures shown can differ in the last digit. This difference from the fitted line is not the line-11 residual in the template below ({fx.county}: {sg(fx.residual)}{A}), which is Delta-G minus the affiliation-share drop. The line describes the county pattern; it does not prove anything.', '']
+lf = ['# Locked Ohio Formula', '', BANNER, '', '## Contents', '', toc(heads), ''] + fit_sec + ['## The equation', '',
       '- **S** (Democratic vote share) = Democratic governor votes / total ballots cast x 100. Ballots cast is the SOS "Ballots Counted" column.',
       '- **R** (Democratic affiliation share) = Democratic-affiliated voters / registered voters (SOS canvass) x 100',
       '- **G** = S - R',

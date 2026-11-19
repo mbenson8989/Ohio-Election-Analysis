@@ -1,12 +1,20 @@
 {
  "pass_name": "Pass 2 (raw OOXML via zipfile/ElementTree; SOS NIST 1500-100 XML for 2026; DuckDB SQL for voter files)",
- "run": "2026-11-19 12:26 CST",
+ "run": "2026-11-19 12:35 CST",
  "counties": 88,
- "figures_checked": 3442,
- "matched": 3442,
+ "figures_checked": 3454,
+ "matched": 3454,
  "mismatched": 0,
  "discrepancies": [],
  "notes_xlsx_vs_xml_2026": [],
+ "ohio_constant_fit_pass2": {
+  "n": 88,
+  "slope": 0.5143283939722957,
+  "intercept": 12.858181632524314,
+  "r2": 0.056736296381975124,
+  "slope_se": 0.22613997786671144,
+  "intercept_se": 0.3910227457547395
+ },
  "earlier_runs": [
   "run 1 (12:25 CST): 3,440 of 3,442 matched; 2 mismatches, both snap26_D (Mahoning 24,034 vs 24,073; Clark 8,609 vs 8,610). Cause: pass-2 code read all 88 snapshot files in one DuckDB glob with auto-sniffed escape character (backslash), which mis-split a few quoted fields. Fixed by reading each file with explicit RFC-4180 quoting; raw files unchanged. See pass2_report_run1_superseded.json."
  ]
