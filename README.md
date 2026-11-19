@@ -27,7 +27,7 @@ Affiliation is the party of the voter's most recent partisan primary ballot in t
 | `data/summary.json` | Statewide figures, constants, regional tests, floor/ceiling, over-ballot check |
 | `data/voterfile_county_aggregates_pass1.csv` | Per-county counts from the voter files |
 | `verification/pass1_report.json`, `pass2_report.json` | Two independent verification passes (pass 2: separately written parsers) |
-| `scripts/` | `aggregate_voterfiles.py`, `build_data.py`, `verify_pass1.py`, `verify_pass2.py`, `charts.py`, `build_wiki.py` |
+| `scripts/` | `aggregate_voterfiles.py`, `build_data.py`, `verify_pass1.py`, `verify_pass2.py`, `charts.py`, `build_wiki.py`, `qa_wiki_source.py`, `qa_wiki_rendered.py` |
 | `tools/` | Browser (Chrome DevTools) download helpers used to fetch SOS files behind Cloudflare |
 | `raw/` | Untouched SOS source files (see below) |
 | `OH_*.png` | Charts used on the Graphs page |
@@ -53,4 +53,4 @@ Run order: `aggregate_voterfiles.py` → `build_data.py` → `verify_pass1.py` �
 
 ## Verification
 
-Pass 1: 3,528 figures checked, 3,528 matched, 0 mismatched. Pass 2 (independent code: raw OOXML, NIST XML, DuckDB): 3,442 checked, 3,442 matched, 0 mismatched. Pass 2's first run had 2 mismatches in a cross-check column caused by its own CSV escape sniffing; fixed and logged in `pass2_report.json`.
+Pass 1: 3,528 figures checked, 3,528 matched, 0 mismatched. Pass 2 (independent code: raw OOXML, NIST XML, DuckDB; also refits the Ohio constant and forward fits with DuckDB regression functions): 3,454 checked, 3,454 matched, 0 mismatched. Pass 2's first run had 2 mismatches in a cross-check column caused by its own CSV escape sniffing; fixed and logged in `pass2_report.json`.
