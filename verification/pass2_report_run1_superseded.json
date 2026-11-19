@@ -1,0 +1,23 @@
+{
+ "pass_name": "Pass 2 (raw OOXML via zipfile/ElementTree; SOS NIST 1500-100 XML for 2026; DuckDB SQL for voter files)",
+ "run": "2026-11-19 12:25 CST",
+ "counties": 88,
+ "figures_checked": 3442,
+ "matched": 3440,
+ "mismatched": 2,
+ "discrepancies": [
+  {
+   "county": "Mahoning",
+   "field": "snap26_D",
+   "pass2": 24034,
+   "table": "24073"
+  },
+  {
+   "county": "Clark",
+   "field": "snap26_D",
+   "pass2": 8609,
+   "table": "8610"
+  }
+ ],
+ "notes_xlsx_vs_xml_2026": []
+}

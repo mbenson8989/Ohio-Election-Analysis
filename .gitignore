@@ -1,0 +1,8 @@
+.venv/
+.chrome-cdp/
+.chrome-*/
+__pycache__/
+*.box-store-snap-*
+raw/voterfile_swvf_20261114/
+raw/datact_snapshot_20261103/*.csv
+raw/_headers/

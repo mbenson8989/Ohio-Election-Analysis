@@ -1,0 +1,11 @@
+{
+ "slope": "OH_Slope_G2022_to_G2026_County_Slope_Chart.png",
+ "stacked": "OH_governor_stacked_share_by_population.png",
+ "regloss": "OH_governor_stacked_share_with_Dem_registration_loss_by_population.png",
+ "dGpop": "OH_deltaG_by_county_population_order_-_floor_Holmes_ceiling_Trumbull.png",
+ "const": "OH_DeltaG_vs_Registration_Share_Drop_OH_Constant.png",
+ "fwd": "OH_Forward_Fit_G_on_R_2022_2026.png",
+ "cf": "OH_Ceiling_and_Floor_Counties_DeltaG_by_Population.png",
+ "tx": "OH_over_ballot_check_dem_plus_rep_vs_ballots.png",
+ "strip": "OH_Residual_Strip_2022_2026_vs_2018_2022_Control.png"
+}
