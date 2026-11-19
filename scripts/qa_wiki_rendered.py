@@ -3,7 +3,7 @@ Checks: tables (every row same cell count as header, no leftover '|' rows render
 no literal \\n / raw markdown table or fence text, no unrendered '**', images (HTTP 200), cross-links (HTTP 200), Cedar link exact, sidebar."""
 import sys, re, os, urllib.request
 from html.parser import HTMLParser
-PAGES = ['Home', 'Reverse-Math', 'Locked-Ohio-Formula', 'Floor-and-Ceiling', 'Graphs']
+PAGES = ['Home', 'Reverse-Math', 'Locked-Ohio-Formula', 'Floor-and-Ceiling', 'Graphs', 'Ohio-County-PDF-Information']
 WIKI = 'https://github.com/mbenson8989/Ohio-Election-Analysis/wiki'
 CEDAR = 'https://github.com/mbenson8989/Nebraska-Election-Analysis-/wiki/Cedar-Audit'
 UA = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) Chrome/130 Safari/537.36'}
@@ -71,6 +71,12 @@ def check(name, html, live, sidebar_html=None):
         if u and not u.startswith('data:') and 'avatars' not in u and 'camo' not in u and status(u) != 200: pr.append(f'image {u} -> {status(u)}')
         if u and 'camo.githubusercontent' in u and status(u) != 200: pr.append(f'image(camo) {u} -> {status(u)}')
     if name == 'Graphs' and len([u for u in p.imgs if u and 'OH_' in u]) != 9: pr.append(f'Graphs has {len([u for u in p.imgs if u and "OH_" in u])} OH images, expected 9')
+    if name == 'Ohio-County-PDF-Information':
+        PDFRAW = 'https://github.com/mbenson8989/Ohio-Election-Analysis/raw/main/Ohio_88_County_Democratic_Registration_and_Vote_Change.pdf'
+        if PDFRAW not in p.links: pr.append('raw PDF download link missing')
+        elif status(PDFRAW) != 200: pr.append(f'raw PDF download link -> {status(PDFRAW)}')
+        for h in sorted({h for h in p.links if h.startswith('https://github.com/mbenson8989/Ohio-Election-Analysis/blob/')}):
+            if status(h) != 200: pr.append(f'repo link {h} -> {status(h)}')
     if live:
         if 'wiki-custom-sidebar' not in html and '_Sidebar' not in html: pr.append('custom _Sidebar not rendered')
         for pg in PAGES:

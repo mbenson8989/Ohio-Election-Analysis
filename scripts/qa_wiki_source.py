@@ -1,7 +1,7 @@
 """Pre-push markdown lint for the wiki source: table shape, TOC anchors, code fences, stray HTML / literal \\n, link targets."""
 import re, os, sys, glob
 W = os.environ.get('WIKI_DIR', os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), '..', 'Ohio.wiki'))
-PAGES = ['Home', 'Reverse-Math', 'Locked-Ohio-Formula', 'Floor-and-Ceiling', 'Graphs']
+PAGES = ['Home', 'Reverse-Math', 'Locked-Ohio-Formula', 'Floor-and-Ceiling', 'Graphs', 'Ohio-County-PDF-Information']
 CEDAR = 'https://github.com/mbenson8989/Nebraska-Election-Analysis-/wiki/Cedar-Audit'
 def slug(h): return re.sub(r'[^a-z0-9 _-]', '', h.lower()).replace(' ', '-')
 def cells(l): return len(re.split(r'(?<!\\)\|', l.strip().strip('|')))

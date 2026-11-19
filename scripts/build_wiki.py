@@ -17,7 +17,9 @@ BUILT = os.environ.get('BUILT', datetime.datetime.now().strftime('%b %d %Y %I:%M
 A = '\\*'                                       # the 2026 "unofficial" marker, escaped for markdown
 L = lambda page, text=None: f'[{text or page.replace("-", " ")}]({WIKI}/{page})'
 PAGES = [('Home', 'Home'), ('Reverse-Math', 'Reverse Math'), ('Locked-Ohio-Formula', 'Locked Ohio Formula'),
-         ('Floor-and-Ceiling', 'Floor and Ceiling'), ('Graphs', 'Graphs')]
+         ('Floor-and-Ceiling', 'Floor and Ceiling'), ('Graphs', 'Graphs'), ('Ohio-County-PDF-Information', 'Ohio County PDF Information')]
+PDFNAME = 'Ohio_88_County_Democratic_Registration_and_Vote_Change.pdf'
+PDFRAW = REPO + '/raw/main/' + PDFNAME
 def i(v): return f'{int(round(v)):,}'
 def sg(v, d=2): return f'{v:+,.{d}f}'
 def pc(v, d=2): return f'{v:.{d}f}%'
@@ -58,7 +60,8 @@ h = [f'# Ohio 2022 vs 2026 Governor Race: Delta-G Method', '', f'**Version 1, bu
      f'2. {L("Reverse-Math", "Reverse Math")}: statewide, the reverse-factoring step, the Ohio constant, regional constants, then all 88 counties (largest to smallest population)',
      f'3. {L("Locked-Ohio-Formula", "Locked Ohio Formula")}: the equation, how Ohio party affiliation is counted, a blank fill-in template and a worked example',
      f'4. {L("Floor-and-Ceiling", "Floor and Ceiling")}: floor and ceiling counties, the Texas-style over-ballot check, counties to narrow out',
-     f'5. {L("Graphs")}: slope chart, stacked bars, Delta-G by population, constant scatter, forward fits, ceiling/floor bars, over-ballot check, control cycle', '',
+     f'5. {L("Graphs")}: slope chart, stacked bars, Delta-G by population, constant scatter, forward fits, ceiling/floor bars, over-ballot check, control cycle',
+     f'6. {L("Ohio-County-PDF-Information", "Ohio County PDF Information")}: downloadable 88-county PDF table (Democratic affiliation, Democratic governor votes and total ballots, 2022 vs 2026{A}) and what each column means', '',
      '## Statewide at a glance', '',
      table(['Measure', '2022 (official)', f'2026{A} (unofficial)', 'Change'], [
         ['Democratic-affiliated voters (SOS voter files; 2022 reconstructed)', i(T['demreg22']), i(T['demreg26']), f'{i(T["demreg_change"])} ({T["demreg_pct_change"]:+.1f}%)'],
@@ -313,8 +316,63 @@ for hd, (name, key, alt, cap) in zip(heads, G):
 gr += [related('Graphs')]
 pages['Graphs'] = '\n'.join(gr)
 
+# ------------------------------------------------------------------ Ohio County PDF Information
+VR = json.load(open(os.path.join(ROOT, 'verification', 'pdf_raw_check.json')))
+assert VR['cells_checked'] == VR['cells_matched'] and not VR['mismatches'], 'PDF raw check not clean: do not publish'
+VS = VR['statewide']
+assert (VS['d22'], VS['d26'], VS['reg26'], VS['v22'], VS['v26'], VS['b22'], VS['b26']) == (T['demreg22'], T['demreg26'], T['totreg26'], T['D22'], T['D26'], T['ballots22'], T['ballots26'])
+def chg(a, b): return f'{b - a:+,} ({(b - a) / a * 100:+.1f}%)'
+heads = ['Download', 'What each column means', 'Statewide totals', 'How the PDF was checked', 'Notes']
+pdfp = ['# Ohio County PDF Information', '', BANNER, '',
+        f'One PDF with all 88 Ohio counties on {VR["pdf_pages"]} landscape pages, modeled on the Nebraska 93-county PDF '
+        f'(Nebraska_93_County_Democratic_Registration_and_Vote_Change.pdf) from the [Nebraska Election Analysis wiki]({NEWIKI}), the project that began with the '
+        f'[Cedar County Audit]({CEDAR}). Counties are sorted by 2026{A} Democratic affiliation share, highest first, with a statewide total row at the bottom.', '',
+        '## Contents', '', toc(heads), '', '## Download', '',
+        f'**[Download the PDF: {PDFNAME}]({PDFRAW})**', '',
+        f'Direct link: {PDFRAW}', '',
+        f'The file is also listed in the [repository]({REPO}). It was built by `scripts/build_pdf.py`.', '',
+        '## What each column means', '',
+        table(['Column', 'Meaning'], [
+            ['County', 'Ohio county (88 rows), then a statewide total row'],
+            [f'Dem Affil Share 2026 %', f'Democratic-affiliated voters in the Nov 14, 2026 SOS voter file divided by SOS canvass registered voters for Nov 3, 2026{A}. The table is sorted by this column'],
+            ['Dem Affil 2022 (est.)', 'Democratic-affiliated voters for Nov 2022, **rebuilt estimate** (see Notes). Not an SOS-published figure'],
+            ['Dem Affil 2026 (Nov 14 file)', 'Voters with PARTY_AFFILIATION = D in the SOS statewide voter file updated Nov 14, 2026'],
+            ['Affil Change # and %', 'Dem Affil 2026 minus Dem Affil 2022 (est.), and that change as a percent of the 2022 estimate'],
+            ['Dem Gov Votes 2022', 'Votes for the Democratic governor ticket (Whaley/Stephens), SOS Nov 8, 2022 official canvass'],
+            [f'Dem Gov Votes 2026{A}', f'Votes for the Democratic governor ticket (Acton/Pepper), SOS Nov 3, 2026 unofficial canvass{A}'],
+            ['Vote Change # and %', 'Dem Gov Votes 2026 minus 2022, and that change as a percent of the 2022 votes'],
+            ['Total Ballots 2022', 'SOS "Ballots Counted", 2022 official canvass'],
+            [f'Total Ballots 2026{A}', f'SOS "Ballots Counted", 2026 unofficial canvass{A}'],
+            ['Ballot Change # and %', 'Total Ballots 2026 minus 2022, and that change as a percent of the 2022 ballots'],
+        ]), '',
+        'Row shading in the PDF: blue rows are the counties where Democratic affiliation rose from 2022 to 2026; the orange row is Wyandot, '
+        f'whose unofficial 2026 ballots counted ({i(wy.ballots26)}) is below its Democratic plus Republican governor votes ({i(wy.DR26)}).', '',
+        '## Statewide totals', '',
+        table(['Measure', '2022', f'2026{A}', 'Change'], [
+            ['Democratic affiliation (2022 est.; 2026 voter file)', i(VS['d22']), i(VS['d26']), chg(VS['d22'], VS['d26'])],
+            ['Democratic affiliation share of registered voters, 2026', '', f'{VS["d26"] / VS["reg26"] * 100:.1f}%', ''],
+            ['Democratic governor votes', i(VS['v22']), i(VS['v26']) + A, chg(VS['v22'], VS['v26']) + A],
+            ['Total ballots counted', i(VS['b22']), i(VS['b26']) + A, chg(VS['b22'], VS['b26']) + A],
+        ]), '',
+        '## How the PDF was checked', '',
+        f'Every cell was recomputed from the raw SOS files only, by a separate script (`scripts/verify_pdf_raw.py`) that does not read any processed table: '
+        f'the 2022 and 2026 canvass spreadsheets, the 2026 SOS XML results feed, the official May 2022 primary ballots-cast file and the four SOS statewide voter files '
+        f'({VR["voterfile_records"]:,} records), rerunning the 2022 affiliation rebuild from voter history. Each value was compared with the text extracted from the PDF to the displayed decimal. '
+        f'Result: **{VR["cells_checked"]:,} cells checked, {VR["cells_matched"]:,} matched, {len(VR["mismatches"])} mismatched** '
+        f'(89 rows x 13 numeric columns, the row order and the figures quoted in the PDF header). The 2026 spreadsheet and XML feed agree on all '
+        f'{VR["xml_vs_xlsx_2026"]["fields_compared"]} county registration, ballot and Democratic-vote fields. Report: '
+        f'[verification/pdf_raw_check.txt]({REPO}/blob/main/verification/pdf_raw_check.txt).', '',
+        '## Notes', '',
+        f'- {A}**2026 is UNOFFICIAL.** 2026 votes, ballots and registered voters come from the SOS "November 3, 2026 General Unofficial Canvass" (downloaded Nov 19, 2026 11:53 AM CST) and will change when the SOS certifies the official canvass.',
+        '- **2022 affiliation is a rebuilt estimate.** Ohio has no party registration and no 2022 voter file is still published. The 2022 figure applies the R.C. 3513.19 rule (most recent partisan primary ballot, Jan 1 2020 to Nov 8 2022) to the voter history in the Nov 14, 2026 voter file, then scales each county for voters removed since 2022 using official May 2022 Democratic primary ballots. '
+        f'Cuyahoga check: {i(row("Cuyahoga").demreg22)} estimated vs 183,502 in the Cuyahoga BOE Dec 1, 2022 report. Details: [Registration data source and caveat]({WIKI}/Home#registration-data-source-and-caveat).',
+        '- Votes are votes for the Democratic governor candidate, not a count of affiliated Democrats who voted.', '',
+        related('Ohio-County-PDF-Information')]
+pages['Ohio-County-PDF-Information'] = '\n'.join(pdfp)
+
 side = ['**Ohio Election Analysis**', '', '1. [Home](' + WIKI + '/Home)', '2. [Reverse Math](' + WIKI + '/Reverse-Math)', '3. [Locked Ohio Formula](' + WIKI + '/Locked-Ohio-Formula)',
-        '4. [Floor and Ceiling](' + WIKI + '/Floor-and-Ceiling)', '5. [Graphs](' + WIKI + '/Graphs)', '', '**Origin**', '', f'- [Cedar County Audit (Nebraska)]({CEDAR})', f'- [Data and scripts]({REPO})']
+        '4. [Floor and Ceiling](' + WIKI + '/Floor-and-Ceiling)', '5. [Graphs](' + WIKI + '/Graphs)',
+        '6. [Ohio County PDF Information](' + WIKI + '/Ohio-County-PDF-Information)', '', '**Origin**', '', f'- [Cedar County Audit (Nebraska)]({CEDAR})', f'- [Data and scripts]({REPO})']
 pages['_Sidebar'] = '\n'.join(side)
 for name, body in pages.items():
     open(os.path.join(W, name + '.md'), 'w').write(body.rstrip() + '\n')
