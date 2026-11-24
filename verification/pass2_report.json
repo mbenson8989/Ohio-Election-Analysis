@@ -1,6 +1,6 @@
 {
  "pass_name": "Pass 2 (raw OOXML via zipfile/ElementTree; SOS NIST 1500-100 XML for 2026; DuckDB SQL for voter files)",
- "run": "2026-11-19 12:35 CST",
+ "run": "2026-11-24 17:57 CST",
  "counties": 88,
  "figures_checked": 3454,
  "matched": 3454,

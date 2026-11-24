@@ -1,6 +1,6 @@
 {
  "pass_name": "Pass 1 (openpyxl Master sheet + SOS turnout file; Python csv module for voter files)",
- "run": "2026-11-19 12:23 CST",
+ "run": "2026-11-24 17:57 CST",
  "counties": 88,
  "figures_checked": 3528,
  "matched": 3528,

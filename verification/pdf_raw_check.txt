@@ -1,4 +1,4 @@
-Ohio 88-county PDF: raw-source cell check (2026-11-19T17:06:41, America/Chicago)
+Ohio 88-county PDF: raw-source cell check (2026-11-24T17:57:45, America/Chicago)
 PDF pages: 3; table rows parsed: 89
 Cells checked: 1165  matched: 1165  mismatched: 0
 2026 xlsx vs NIST XML: 264 fields, 0 mismatches

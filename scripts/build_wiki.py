@@ -370,9 +370,16 @@ pdfp = ['# Ohio County PDF Information', '', BANNER, '',
         related('Ohio-County-PDF-Information')]
 pages['Ohio-County-PDF-Information'] = '\n'.join(pdfp)
 
-side = ['**Ohio Election Analysis**', '', '1. [Home](' + WIKI + '/Home)', '2. [Reverse Math](' + WIKI + '/Reverse-Math)', '3. [Locked Ohio Formula](' + WIKI + '/Locked-Ohio-Formula)',
-        '4. [Floor and Ceiling](' + WIKI + '/Floor-and-Ceiling)', '5. [Graphs](' + WIKI + '/Graphs)',
-        '6. [Ohio County PDF Information](' + WIKI + '/Ohio-County-PDF-Information)', '', '**Origin**', '', f'- [Cedar County Audit (Nebraska)]({CEDAR})', f'- [Data and scripts]({REPO})']
+side = ['**Ohio ΔG wiki, reading order**', '',
+        '1. [Home](' + WIKI + ')',
+        f'2. [Cedar County Audit (Nebraska)]({CEDAR})',
+        '3. [Floor and Ceiling Counties](' + WIKI + '/Floor-and-Ceiling)',
+        '4. [Bottom-Up Reverse Math](' + WIKI + '/Reverse-Math)',
+        '   - [Expected-loss residual layer](' + WIKI + '/Reverse-Math#solving-backward-implied-extra-votes)',
+        '5. [Locked Ohio Formula](' + WIKI + '/Locked-Ohio-Formula)',
+        '6. [Graphs](' + WIKI + '/Graphs)',
+        '7. [Ohio County PDF Information](' + WIKI + '/Ohio-County-PDF-Information)',
+        '', r'\*2026 figures are unofficial until the Ohio Secretary of State certifies them.']
 pages['_Sidebar'] = '\n'.join(side)
 for name, body in pages.items():
     open(os.path.join(W, name + '.md'), 'w').write(body.rstrip() + '\n')
